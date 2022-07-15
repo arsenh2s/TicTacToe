@@ -1,3 +1,4 @@
+
 let gameName = document.querySelector(".gameName")
 let startBtn = document.querySelector(".btnStart")
 let area = document.querySelector(".area")
@@ -11,29 +12,46 @@ let winnerCountXDiag = 0
 let winnerCountODiag = 0
 let j = 0
 let f = boardArea
-
-
-
-
-
-let sells = []
-for (let i = 0; i < boardArea ** 2; i++) {
-    let sell = document.createElement("div")
-    game.appendChild(sell)
-    sells[i] = sell
-    sells[i].classList.add("sell")
-}
 let board = []
-for (let l = 0; l < sells.length / boardArea; l++) {
-    board.push([])
-    for (let j = 0; j < boardArea; j++) {
-        board[l].push("")
-    }
-}
-console.log(board);
-
+let sells = []
 let turn = 0
-let a = 1
+
+let sellValue = [
+
+]
+
+function startGame() {
+    area.style.display = "none"
+    TTT.style.display = "block"
+    TTT.style.left = '50%';
+    TTT.style.transform = "translate(-50%, -50%)"
+    // let boardArea = +document.querySelector(".inputcell").value
+    let boardArea = 3
+    console.log(+document.querySelector(".inputcell").value);
+
+    for (let i = 0; i < boardArea ** 2; i++) {
+        let sell = document.createElement("div")
+        game.appendChild(sell)
+        sells[i] = sell
+        sells[i].classList.add("sell")
+        sells[i].style.width = 600 / boardArea + "px"
+        sells[i].style.height = 600 / boardArea + "px"
+    }
+    for (let l = 0; l < sells.length / boardArea; l++) {
+        board.push([])
+        for (let j = 0; j < boardArea; j++) {
+            board[l].push("")
+        }
+    }
+    gameAnimation()
+
+}
+
+
+
+
+
+
 function gameAnimation() {
     checkWinner()
     for (let i in sells) {
@@ -77,12 +95,10 @@ function gameAnimation() {
                 sellsClear[i].appendChild(O)
                 O.classList.add("O")
                 O.innerHTML = "O"
-                console.log(sells);
 
                 for (let i in sells) {
                     if (sells[i].innerText == "O") {
                         board[Math.floor(i / boardArea)][i % boardArea] = "O"
-                        console.log(board);
                     }
                 }
             }
@@ -91,14 +107,10 @@ function gameAnimation() {
     }
     if (gameEnd == 0) requestAnimationFrame(gameAnimation)
 }
-gameAnimation()
 
 
 
-function startGame() {
-    area.style.display = "none"
-    TTT.style.display = "block"
-}
+
 
 function checkWinner() {
 
@@ -154,15 +166,12 @@ function checkWinner() {
     }
 
     for (let i in board) {
-        console.log(i, j);
         if (board[i][j] == "X") {
             winnerCountXDiag++
-            console.log(board[i][j]);
         }
         else winnerCountXDiag = 0
         if (board[i][j] == "O") {
             winnerCountODiag++
-            console.log(winnerCountODiag);
         }
         else winnerCountODiag = 0
         if (winnerCountXDiag == boardArea) {
@@ -183,15 +192,12 @@ function checkWinner() {
 
     }
     for (let i in board) {
-        console.log(i, f);
         if (board[i][f] == "X") {
             winnerCountXDiag++
-            console.log(board[i][f]);
         }
         else winnerCountXDiag = 0
         if (board[i][f] == "O") {
             winnerCountODiag++
-            console.log(winnerCountODiag);
         }
         else winnerCountODiag = 0
         if (winnerCountXDiag == boardArea) {
