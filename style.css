@@ -17,11 +17,11 @@ body {
 
 
 .area {
-    margin: 6rem auto;
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
     text-align: center;
-    /* background-color: rgba(255, 255, 255, 0.075); */
     box-shadow: rgba(255, 255, 255, 0.322) 3px 3px 3px inset, rgba(0, 0, 0, 0.582) 10px 10px 10px;
-
 
     padding: 80px 40px;
     border-radius: 40px;
@@ -34,6 +34,7 @@ body {
     text-align: center;
     font-family: sans-serif;
     -webkit-text-stroke: #fff 2px;
+    letter-spacing: 1px
 }
 
 .area .btnStart {
@@ -57,19 +58,19 @@ body {
     box-shadow: 8px 8px 0 rgb(45, 85, 117);
 }
 
-.area .modal {
+.modal {
     position: absolute;
-    top: -120%;
+    bottom: 30px;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, .8);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-family: sans-serif
 }
 
-label {
+.inputcell, label {
     padding: .6rem;
     font-size: 1.4rem;
     text-align: center;
@@ -78,21 +79,19 @@ label {
 }
 
 .modal input[type=text] {
-    width: 55px;
-    padding: .6rem;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 1.4rem;
-    border-radius: .8rem;
-    color: rgb(1, 1, 90);
-    border: .1rem solid rgb(1, 1, 90);
+height: 50px;
+width: 100px;
+border-radius: 20px;
+padding: 10px
 }
 
 .ttt {
     display: none;
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    left: 0;
+    transform: translate(-600px, -50%);
+    transition: linear 1s
 }
 
 .game {
@@ -107,12 +106,16 @@ label {
 }
 
 .sell {
-    width: 200px;
-    height: 200px;
+
     border: rgb(255, 255, 255) 2px solid;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+.sell:hover{
+    background-color: rgba(255, 255, 255, 0.199);
+    transition: linear 0.05s background
 }
 
 .X {
